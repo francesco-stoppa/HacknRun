@@ -7,6 +7,7 @@ public class RobotController : MonoBehaviour
     [Tooltip("Place the camera here.")]
     public Transform cam;
     private AudioListener a;
+    private TargetLock tl;
     public bool videoCamera = false;
     [SerializeField] private bool activeCharacter = false;
     [SerializeField] private float moveSpeed = 5f;
@@ -21,7 +22,10 @@ public class RobotController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         c = cam.gameObject.GetComponent<Camera>();
+        tl = cam.gameObject.GetComponent<TargetLock>();
 
+
+        tl.enabled = false;
         if (c == null) return;
         c.enabled = false;
         if (cam == null) return;
@@ -36,6 +40,8 @@ public class RobotController : MonoBehaviour
     {
         c.enabled = true;
         activeCharacter = true;
+        tl.enabled = true;
+
         if (a == null) return;
         a.enabled = true;
     }
