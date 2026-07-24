@@ -496,15 +496,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d8e3868960dd173488b9114009d1f945, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d8e3868960dd173488b9114009d1f945, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d8e3868960dd173488b9114009d1f945, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d8e3868960dd173488b9114009d1f945, type: 3}
       propertyPath: m_LocalPosition.x
@@ -673,15 +673,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fe1d6ac0eb6c0a64ba6f8685db50e423, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe1d6ac0eb6c0a64ba6f8685db50e423, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe1d6ac0eb6c0a64ba6f8685db50e423, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe1d6ac0eb6c0a64ba6f8685db50e423, type: 3}
       propertyPath: m_LocalPosition.x
@@ -989,7 +989,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73be2f9304ed2a44380cf7d40f9d2ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 431061263}
+  cam: {fileID: 0}
+  videoCamera: 0
+  activeCharacter: 0
   moveSpeed: 10
   gravity: -9.81
 --- !u!1 &1517288344
@@ -1363,7 +1365,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73be2f9304ed2a44380cf7d40f9d2ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 2069868386}
+  cam: {fileID: 0}
+  videoCamera: 0
+  activeCharacter: 0
   moveSpeed: 5
   gravity: -9.81
 --- !u!143 &1734637213
