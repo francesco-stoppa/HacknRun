@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f99336e1efdc842bf727ff098f49d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
+  duration: 5
   text: Timer
 --- !u!1 &7885416274187244400
 GameObject:
@@ -235,9 +235,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.5
+  near clip plane: 0.3
   far clip plane: 1000
-  field of view: 55
+  field of view: 45
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -320,12 +320,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 0.15
-  robot: 0
   minPitch: -45
   maxPitch: 45
   minYaw: -90
   maxYaw: 90
-  rumba: 0
 --- !u!114 &1192309673643971370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +337,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockTime: 0
-  maxDistance: 10
+  maxDistance: 20
   aimRadius: 0.5
   moveDuration: 0.5

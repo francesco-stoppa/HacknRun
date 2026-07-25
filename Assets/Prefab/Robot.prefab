@@ -110,8 +110,8 @@ CharacterController:
   serializedVersion: 3
   m_Height: 4
   m_Radius: 1
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 47
+  m_StepOffset: 0.8
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.6, z: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f99336e1efdc842bf727ff098f49d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
+  duration: 5
   text: Timer
 --- !u!1 &7844546957867847465
 GameObject:
@@ -298,12 +298,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 0.15
-  robot: 1
   minPitch: -60
   maxPitch: 60
   minYaw: -45
   maxYaw: 45
-  rumba: 0
 --- !u!114 &8564422694011381347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockTime: 0
-  maxDistance: 10
+  maxDistance: 20
   aimRadius: 0.5
   moveDuration: 0.5

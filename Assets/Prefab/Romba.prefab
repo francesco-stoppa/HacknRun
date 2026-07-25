@@ -152,12 +152,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 0.15
-  robot: 1
   minPitch: -60
   maxPitch: 60
   minYaw: -180
   maxYaw: 180
-  rumba: 1
 --- !u!114 &6010815018024863608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockTime: 0
-  maxDistance: 10
+  maxDistance: 20
   aimRadius: 0.5
   moveDuration: 0.5
 --- !u!1 &7954180108819900810
@@ -286,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f99336e1efdc842bf727ff098f49d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
+  duration: 5
   text: Timer
 --- !u!1001 &3029523324378163568
 PrefabInstance:
