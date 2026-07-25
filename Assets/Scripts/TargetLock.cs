@@ -15,7 +15,7 @@ public class TargetLock : MonoBehaviour
 
     [SerializeField] private float moveDuration = 1f;
 
-    GameObject bob;
+    GameObject goToHack;
 
     void Awake()
     {
@@ -44,8 +44,17 @@ public class TargetLock : MonoBehaviour
 
                         if(hit.collider.tag == "Player")
                         {
-                            bob = hit.collider.gameObject;
-                            MoveCameraTo(hit.collider.transform);
+                            goToHack = hit.collider.gameObject;
+
+                            NpcMovement nm = goToHack.GetComponent<NpcMovement>();
+                            if (nm != null)
+                                nm.stop = true;
+
+                            RobotController rc = goToHack.GetComponent<RobotController>();
+                            if (rc != null)
+                                MoveCameraTo(rc.characterCamera);
+                            else
+                                Debug.LogError("Error...");
                         }
                     }
                 }
@@ -98,13 +107,13 @@ public class TargetLock : MonoBehaviour
 
     void CompleateTransition()
     {
-        if (bob == null) return;
+        if (goToHack == null) return;
 
-        RobotController rc = bob.GetComponent<RobotController>();
+        RobotController rc = goToHack.GetComponent<RobotController>();
 
         if (rc == null) return;
 
-        rc.cam.gameObject.SetActive(true);
+        rc.characterCamera.gameObject.SetActive(true);
         rc.ActiveCharacter();
 
         Destroy(gameObject);

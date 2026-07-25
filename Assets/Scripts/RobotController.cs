@@ -4,32 +4,62 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class RobotController : MonoBehaviour
 {
-    [Tooltip("Place the camera here.")]
-    public Transform cam;
-    private AudioListener a;
-    private TargetLock tl;
-    public bool videoCamera = false;
+    [Header("Need to compilates")]
+    public Transform characterCamera;
+    public E_CharacterYpe characterType;
     [SerializeField] private bool activeCharacter = false;
+
+    [Header("Stats")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float gravity = -9.81f;
 
+
     private CharacterController controller;
+    private CharacterTimer timer;
     private float verticalVelocity;
 
-    private Camera c;
+
+    // player needs
+    Camera c;
+    AudioListener a;
+    TargetLock tl;
+    bool videoCamera = false;
+    CameraController cc;
+    NpcMovement nm;
 
     private void Awake()
     {
+        gameObject.layer = 0;
+
+        nm = GetComponent<NpcMovement>();
+        timer = GetComponent<CharacterTimer>();
         controller = GetComponent<CharacterController>();
-        c = cam.gameObject.GetComponent<Camera>();
-        tl = cam.gameObject.GetComponent<TargetLock>();
+        c = characterCamera.gameObject.GetComponent<Camera>();
 
-
+        tl = characterCamera.gameObject.GetComponent<TargetLock>();
         tl.enabled = false;
+
+        cc = characterCamera.gameObject.GetComponent<CameraController>();
+
+        cc.SetType();
+
+        switch (characterType)
+        {
+            case E_CharacterYpe.roomba:
+                cc.SetType(true, true);
+                break;
+            case E_CharacterYpe.robot:
+                cc.SetType(true);
+                break;
+            case E_CharacterYpe.camera:
+                videoCamera = true;
+                break;
+        }
+
         if (c == null) return;
         c.enabled = false;
-        if (cam == null) return;
-        a = cam.gameObject.GetComponent<AudioListener>();
+        if (characterCamera == null) return;
+        a = characterCamera.gameObject.GetComponent<AudioListener>();
         a.enabled = false;
 
         if (activeCharacter)
@@ -38,9 +68,31 @@ public class RobotController : MonoBehaviour
 
     public void ActiveCharacter()
     {
+        if(nm)
+            nm.enabled = false;
+
+        switch(characterType)
+        {
+            case E_CharacterYpe.roomba:
+                gameObject.layer = 0;
+                
+                break;
+            case E_CharacterYpe.robot:
+                gameObject.layer = 3;
+
+                break;
+            case E_CharacterYpe.camera:
+                videoCamera = true;
+                gameObject.layer = 6;
+                break;
+        }
+
         c.enabled = true;
         activeCharacter = true;
         tl.enabled = true;
+
+        if(timer != null)
+            timer.StartTimer();
 
         if (a == null) return;
         a.enabled = true;
@@ -61,8 +113,8 @@ public class RobotController : MonoBehaviour
         input = Vector2.ClampMagnitude(input, 1f);
 
         // Direzioni della camera sul piano XZ
-        Vector3 forward = cam.forward;
-        Vector3 right = cam.right;
+        Vector3 forward = characterCamera.forward;
+        Vector3 right = characterCamera.right;
 
         forward.y = 0f;
         right.y = 0f;
