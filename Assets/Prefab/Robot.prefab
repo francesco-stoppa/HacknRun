@@ -153,7 +153,7 @@ MonoBehaviour:
   cam: {fileID: 7340465007492014282}
   videoCamera: 0
   activeCharacter: 0
-  moveSpeed: 7
+  moveSpeed: 10
   gravity: -9.81
 --- !u!1 &7844546957867847465
 GameObject:
