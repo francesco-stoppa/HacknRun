@@ -25,12 +25,13 @@ public class RobotController : MonoBehaviour
     TargetLock tl;
     bool videoCamera = false;
     CameraController cc;
+    NpcMovement nm;
 
     private void Awake()
     {
         gameObject.layer = 0;
 
-
+        nm = GetComponent<NpcMovement>();
         timer = GetComponent<CharacterTimer>();
         controller = GetComponent<CharacterController>();
         c = characterCamera.gameObject.GetComponent<Camera>();
@@ -67,6 +68,9 @@ public class RobotController : MonoBehaviour
 
     public void ActiveCharacter()
     {
+        if(nm)
+            nm.enabled = false;
+
         switch(characterType)
         {
             case E_CharacterYpe.roomba:
