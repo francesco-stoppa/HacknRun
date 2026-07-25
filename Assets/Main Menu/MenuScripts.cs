@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem; // Importante per il nuovo Input System!
+using UnityEngine.InputSystem; // Nuovo Input System
 using TMPro;
 
 public class MenuManager : MonoBehaviour
@@ -20,13 +20,22 @@ public class MenuManager : MonoBehaviour
     [Header("Pannelli UI (In-Game / Pausa)")]
     [SerializeField] private GameObject pauseMenuPanel;
 
-    [Header("UI Audio - Icone/Testo")]
-    [SerializeField] private Image audioButtonIcon;
+    [Header("UI Audio - Switch Sprite Icona")]
+    [Tooltip("L'Image del pulsante audio che deve cambiare sprite")]
+    [SerializeField] private Image audioButtonImage;
+
+    [Tooltip("Sprite per l'icona dell'audio ATTIVO")]
     [SerializeField] private Sprite iconAudioOn;
+
+    [Tooltip("Sprite per l'icona dell'audio DISATTIVATO (Mute)")]
     [SerializeField] private Sprite iconAudioOff;
-    [SerializeField] private TextMeshProUGUI audioButtonText;
-    [SerializeField] private string textAudioOn = "AUDIO: ON";
-    [SerializeField] private string textAudioOff = "AUDIO: OFF";
+
+    [Header("UI Audio - Toggle Testi/Grafiche ON/OFF")]
+    [Tooltip("GameObject visibile quando l'audio è ATTIVO (es. testo/grafica ON)")]
+    [SerializeField] private GameObject audioOnObject;
+
+    [Tooltip("GameObject visibile quando l'audio è DISATTIVATO (es. testo/grafica OFF)")]
+    [SerializeField] private GameObject audioOffObject;
 
     [Header("Effetti Sonori (SFX)")]
     [SerializeField] private AudioSource audioSource;
@@ -42,6 +51,7 @@ public class MenuManager : MonoBehaviour
             audioSource = GetComponent<AudioSource>();
         }
 
+        // Inizializza sia la sprite sia la grafica ON/OFF all'avvio
         UpdateAudioUI();
 
         // Se ci troviamo nel Menu Principale, imposta la vista corretta
@@ -50,7 +60,7 @@ public class MenuManager : MonoBehaviour
             OpenMainMenu();
         }
 
-        // Se ci troviamo in gioco (c'è il pannello pausa), assicurati che sia disattivato all'avvio
+        // Se ci troviamo in gioco, assicuratevi che il menu di pausa sia nascosto all'avvio
         if (pauseMenuPanel != null)
         {
             Resume();
@@ -59,7 +69,7 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
-        // Gestione Pausa tramite tasto ESC (compatibile con il Nuovo Input System)
+        // Gestione Pausa tramite tasto ESC (Nuovo Input System)
         if (pauseMenuPanel != null && Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             if (isPaused)
@@ -77,13 +87,13 @@ public class MenuManager : MonoBehaviour
 
     public void PlayClickSound()
     {
-        if (audioSource != null && buttonClickSFX != null)
+        if (!isMuted && audioSource != null && buttonClickSFX != null)
         {
             audioSource.PlayOneShot(buttonClickSFX);
         }
     }
 
-    // --- GESTIONE CREDITS E SUB-MENU ---
+    // --- GESTIONE MENU PRINCIPALE E CREDITI ---
 
     public void OpenCredits()
     {
@@ -127,7 +137,7 @@ public class MenuManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         PlayClickSound();
-        Time.timeScale = 1f; // Ripristina sempre il tempo prima di caricare una nuova scena!
+        Time.timeScale = 1f; // Ripristina il tempo prima di cambiare scena
 
         if (!string.IsNullOrEmpty(mainMenuSceneName))
         {
@@ -148,23 +158,34 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    // --- GESTIONE AUDIO ---
+    // --- GESTIONE AUDIO (TOGGLE COMPLETO) ---
 
     public void ToggleMute()
     {
+        // Riproduce il suono del click prima di mutare
         PlayClickSound();
+
+        // Inverte lo stato mutato
         isMuted = !isMuted;
+
+        // Gestisce il volume globale di Unity
         AudioListener.volume = isMuted ? 0f : 1f;
+
+        // Aggiorna sia le sprite che i GameObject ON/OFF
         UpdateAudioUI();
     }
 
     private void UpdateAudioUI()
     {
-        if (audioButtonIcon != null)
-            audioButtonIcon.sprite = isMuted ? iconAudioOff : iconAudioOn;
+        // 1. SWITCH SPRITE DELL'ICONA
+        if (audioButtonImage != null)
+        {
+            audioButtonImage.sprite = isMuted ? iconAudioOff : iconAudioOn;
+        }
 
-        if (audioButtonText != null)
-            audioButtonText.text = isMuted ? textAudioOff : textAudioOn;
+        // 2. SWITCH DEI GAMEOBJECT (TESTI/GRAFICHE ON e OFF)
+        if (audioOnObject != null) audioOnObject.SetActive(!isMuted);
+        if (audioOffObject != null) audioOffObject.SetActive(isMuted);
     }
 
     // --- QUIT ---
