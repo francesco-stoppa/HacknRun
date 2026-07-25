@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3956017946893133672}
   - component: {fileID: 4683269095615948943}
   - component: {fileID: 971748486448190883}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Camera
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73be2f9304ed2a44380cf7d40f9d2ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 3120014899508446323}
-  videoCamera: 1
+  characterCamera: {fileID: 3120014899508446323}
+  characterType: 2
   activeCharacter: 0
   moveSpeed: 5
   gravity: -9.81

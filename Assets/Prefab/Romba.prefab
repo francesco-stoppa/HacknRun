@@ -256,7 +256,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.25, z: 0}
+  m_Center: {x: 0, y: 0.45, z: 0}
 --- !u!114 &1971740910464655183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73be2f9304ed2a44380cf7d40f9d2ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 8034687075839647025}
-  videoCamera: 0
+  characterCamera: {fileID: 8034687075839647025}
+  characterType: 0
   activeCharacter: 0
   moveSpeed: 10
   gravity: -9.81

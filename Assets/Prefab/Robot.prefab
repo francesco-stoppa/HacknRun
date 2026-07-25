@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3511275503373360211}
   - component: {fileID: 6650910327916495786}
   - component: {fileID: 7278173026773715902}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Robot
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -127,8 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73be2f9304ed2a44380cf7d40f9d2ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 7340465007492014282}
-  videoCamera: 0
+  characterCamera: {fileID: 7340465007492014282}
+  characterType: 1
   activeCharacter: 0
   moveSpeed: 10
   gravity: -9.81

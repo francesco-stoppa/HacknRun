@@ -6,8 +6,10 @@ public class CameraController : MonoBehaviour
     [Header("Sensitivity")]
     [SerializeField] private float mouseSensitivity = 0.15f;
 
+    bool robot = false;
+    bool rumba = false;
+
     [Header("Rotation Limits")]
-    [SerializeField] private bool robot = true;
 
     [SerializeField] private float minPitch = -60f;
     [SerializeField] private float maxPitch = 60f;
@@ -15,8 +17,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float minYaw = -45f;
     [SerializeField] private float maxYaw = 45f;
 
-    [Header("Axis Lock")]
-    [SerializeField] private bool rumba = false;
 
     private float pitch;
     private float yaw;
@@ -29,6 +29,11 @@ public class CameraController : MonoBehaviour
         yaw = NormalizeAngle(angles.y);
     }
 
+    public void SetType(bool robot = false, bool rumba = false)
+    {
+        this.robot = robot;
+        this.rumba = rumba;
+    }
     private void Update()
     {
         Vector2 mouse = Mouse.current.delta.ReadValue();
