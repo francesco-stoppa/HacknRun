@@ -8,13 +8,14 @@ public class TargetLock : MonoBehaviour
     [SerializeField] private float lockTime = 2f;
     [SerializeField] private float maxDistance = 100f;
 
-
     [SerializeField] private float aimRadius = 0.5f;
 
     private float timer;
     private bool locked;
 
     [SerializeField] private float moveDuration = 1f;
+
+    GameObject bob;
 
     void Awake()
     {
@@ -24,6 +25,8 @@ public class TargetLock : MonoBehaviour
 
     void Update()
     {
+        if (cam == null) return;
+
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
         if (Physics.SphereCast(ray, aimRadius, out RaycastHit hit, maxDistance))
@@ -39,8 +42,9 @@ public class TargetLock : MonoBehaviour
                         locked = true;
                         Debug.Log("Target agganciato: " + hit.collider.name);
 
-                        if(hit.collider.name == "Cube")
+                        if(hit.collider.tag == "Player")
                         {
+                            bob = hit.collider.gameObject;
                             MoveCameraTo(hit.collider.transform);
                         }
                     }
@@ -62,7 +66,7 @@ public class TargetLock : MonoBehaviour
     public void MoveCameraTo(Transform target)
     {
         GameObject parent = transform.parent.gameObject;
-        Debug.Log(parent.gameObject.name);
+
         transform.SetParent(null, true);
 
         if (parent != null)
@@ -74,9 +78,6 @@ public class TargetLock : MonoBehaviour
 
     IEnumerator MoveRoutine(Vector3 targetPosition)
     {
-
-        // transform.SetParent(null, true);
-
         Vector3 startPosition = transform.position;
 
         float t = 0;
@@ -91,7 +92,22 @@ public class TargetLock : MonoBehaviour
         }
 
         transform.position = targetPosition;
+
+        CompleateTransition();
     }
 
+    void CompleateTransition()
+    {
+        if (bob == null) return;
+
+        RobotController rc = bob.GetComponent<RobotController>();
+
+        if (rc == null) return;
+
+        rc.cam.gameObject.SetActive(true);
+        rc.ActiveCharacter();
+
+        Destroy(gameObject);
+    }
 }
 
