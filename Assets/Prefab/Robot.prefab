@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8483119074532923329}
   - component: {fileID: 3315200444392875564}
   - component: {fileID: 7701415782691811419}
-  - component: {fileID: 2010595714636261168}
   - component: {fileID: 3511275503373360211}
   - component: {fileID: 6650910327916495786}
+  - component: {fileID: 7278173026773715902}
   m_Layer: 3
   m_Name: Robot
   m_TagString: Player
@@ -90,29 +90,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2010595714636261168
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4928995277502470070}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.5
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.6, z: 0}
 --- !u!143 &3511275503373360211
 CharacterController:
   m_ObjectHideFlags: 0
@@ -132,7 +109,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 4
-  m_Radius: 1.5
+  m_Radius: 1
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -155,6 +132,20 @@ MonoBehaviour:
   activeCharacter: 0
   moveSpeed: 10
   gravity: -9.81
+--- !u!114 &7278173026773715902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928995277502470070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f99336e1efdc842bf727ff098f49d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 10
+  text: Timer
 --- !u!1 &7844546957867847465
 GameObject:
   m_ObjectHideFlags: 0

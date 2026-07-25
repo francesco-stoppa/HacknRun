@@ -14,12 +14,14 @@ public class RobotController : MonoBehaviour
     [SerializeField] private float gravity = -9.81f;
 
     private CharacterController controller;
+    private CharacterTimer timer;
     private float verticalVelocity;
 
     private Camera c;
 
     private void Awake()
     {
+        timer = GetComponent<CharacterTimer>();
         controller = GetComponent<CharacterController>();
         c = cam.gameObject.GetComponent<Camera>();
         tl = cam.gameObject.GetComponent<TargetLock>();
@@ -41,6 +43,9 @@ public class RobotController : MonoBehaviour
         c.enabled = true;
         activeCharacter = true;
         tl.enabled = true;
+
+        if(timer != null)
+            timer.StartTimer();
 
         if (a == null) return;
         a.enabled = true;
