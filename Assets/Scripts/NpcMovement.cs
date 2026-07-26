@@ -9,12 +9,8 @@ public class NpcMovement : MonoBehaviour
 
     private int currentWaypoint = 0;
 
-    public bool stop = false;
-
     private void Update()
     {
-        if (stop) return;
-
         if (waypoints.Length == 0)
             return;
 
@@ -40,7 +36,6 @@ public class NpcMovement : MonoBehaviour
             }
         }
 
-        Debug.Log(1);
     }
 
     private void OnDrawGizmos()

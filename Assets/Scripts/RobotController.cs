@@ -41,15 +41,15 @@ public class RobotController : MonoBehaviour
 
         cc = characterCamera.gameObject.GetComponent<CameraController>();
 
-        cc.SetType();
+        cc.SetCamera();
 
         switch (characterType)
         {
             case E_CharacterYpe.roomba:
-                cc.SetType(true, true);
+                cc.SetCamera(true, true);
                 break;
             case E_CharacterYpe.robot:
-                cc.SetType(true);
+                cc.SetCamera(true);
                 break;
             case E_CharacterYpe.camera:
                 videoCamera = true;

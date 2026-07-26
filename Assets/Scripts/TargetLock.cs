@@ -46,10 +46,6 @@ public class TargetLock : MonoBehaviour
                         {
                             goToHack = hit.collider.gameObject;
 
-                            NpcMovement nm = goToHack.GetComponent<NpcMovement>();
-                            if (nm != null)
-                                nm.stop = true;
-
                             RobotController rc = goToHack.GetComponent<RobotController>();
                             if (rc != null)
                                 MoveCameraTo(rc.characterCamera);

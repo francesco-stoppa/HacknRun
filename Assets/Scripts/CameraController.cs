@@ -21,21 +21,42 @@ public class CameraController : MonoBehaviour
     private float pitch;
     private float yaw;
 
+
+    // ADD
+    bool active = false;
+    [Tooltip("Da assegnare solo al primo robot di cui h ail controllo il Player")]
+    public Canvas canvas;
+
     private void Start()
     {
+
         Vector3 angles = transform.localEulerAngles;
 
         pitch = NormalizeAngle(angles.x);
         yaw = NormalizeAngle(angles.y);
+
     }
 
-    public void SetType(bool robot = false, bool rumba = false)
+    public void ActiveCameraController(bool robot = false, bool rumba = false)
+    {
+
+        SetCamera(robot, rumba);
+
+        active = true;
+    }
+
+    public void SetCamera(bool robot = false, bool rumba = false)
     {
         this.robot = robot;
         this.rumba = rumba;
     }
+
+
     private void Update()
     {
+        if (!active) return;
+
+
         Vector2 mouse = Mouse.current.delta.ReadValue();
 
         // Destra/Sinistra
