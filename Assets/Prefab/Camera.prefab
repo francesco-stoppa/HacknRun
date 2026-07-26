@@ -168,6 +168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 5
   text: Timer
+  explosionSFX: {fileID: 8300000, guid: 2b4a26868889a8c468e46c0a7afa1e45, type: 3}
+  deathScreenPanel: {fileID: 0}
+  menuManager: {fileID: 0}
 --- !u!1 &7885416274187244400
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,3 +343,6 @@ MonoBehaviour:
   maxDistance: 35
   aimRadius: 0.5
   moveDuration: 0.5
+  crosshairImage: {fileID: 0}
+  normalSprite: {fileID: 21300000, guid: 21002883e5199fd438c561113f755030, type: 3}
+  validTargetSprite: {fileID: 21300000, guid: cedbc2aa7a3164e468b7c6807233ed4d, type: 3}
