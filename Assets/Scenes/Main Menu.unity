@@ -2145,7 +2145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915c45086905c204799de50c3b5d2751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: Test
+  gameSceneName: DavideTestLevel
   mainMenuSceneName: Main Menu
   mainMenuPanel: {fileID: 1852023853}
   creditsPanel: {fileID: 1450662457}

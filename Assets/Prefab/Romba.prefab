@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockTime: 0
-  maxDistance: 20
+  maxDistance: 35
   aimRadius: 0.5
   moveDuration: 0.5
 --- !u!1 &7954180108819900810
