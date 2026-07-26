@@ -16,6 +16,7 @@ public class MenuManager : MonoBehaviour
     [Header("Pannelli UI (Menu Principale)")]
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject creditsPanel;
+    [SerializeField] private GameObject howToPlayPanel; // <-- PANNELLO HOW TO PLAY AGGIUNTO
 
     [Header("Pannelli UI (In-Game / Pausa)")]
     [SerializeField] private GameObject pauseMenuPanel;
@@ -55,7 +56,7 @@ public class MenuManager : MonoBehaviour
         UpdateAudioUI();
 
         // Se ci troviamo nel Menu Principale, imposta la vista corretta
-        if (mainMenuPanel != null || creditsPanel != null)
+        if (mainMenuPanel != null || creditsPanel != null || howToPlayPanel != null)
         {
             OpenMainMenu();
         }
@@ -93,20 +94,30 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    // --- GESTIONE MENU PRINCIPALE E CREDITI ---
-
-    public void OpenCredits()
-    {
-        PlayClickSound();
-        if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
-        if (creditsPanel != null) creditsPanel.SetActive(true);
-    }
+    // --- GESTIONE MENU PRINCIPALE, CREDITI E HOW TO PLAY ---
 
     public void OpenMainMenu()
     {
         PlayClickSound();
         if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
         if (creditsPanel != null) creditsPanel.SetActive(false);
+        if (howToPlayPanel != null) howToPlayPanel.SetActive(false);
+    }
+
+    public void OpenCredits()
+    {
+        PlayClickSound();
+        if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
+        if (creditsPanel != null) creditsPanel.SetActive(true);
+        if (howToPlayPanel != null) howToPlayPanel.SetActive(false);
+    }
+
+    public void OpenHowToPlay()
+    {
+        PlayClickSound();
+        if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
+        if (creditsPanel != null) creditsPanel.SetActive(false);
+        if (howToPlayPanel != null) howToPlayPanel.SetActive(true);
     }
 
     // --- GESTIONE PAUSA (IN-GAME) ---
