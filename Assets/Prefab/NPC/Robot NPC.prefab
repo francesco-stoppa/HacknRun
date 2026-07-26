@@ -108,6 +108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot
       objectReference: {fileID: 0}
+    - target: {fileID: 7278173026773715902, guid: a2bb56b298d69b1448cf0420a07f121e, type: 3}
+      propertyPath: explosionSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b4a26868889a8c468e46c0a7afa1e45, type: 3}
     - target: {fileID: 8483119074532923329, guid: a2bb56b298d69b1448cf0420a07f121e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -148,6 +152,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8564422694011381347, guid: a2bb56b298d69b1448cf0420a07f121e, type: 3}
+      propertyPath: normalSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 21002883e5199fd438c561113f755030, type: 3}
+    - target: {fileID: 8564422694011381347, guid: a2bb56b298d69b1448cf0420a07f121e, type: 3}
+      propertyPath: validTargetSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cedbc2aa7a3164e468b7c6807233ed4d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

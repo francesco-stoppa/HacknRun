@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
     [Header("Impostazioni Livelli")]
     [Tooltip("Nome della scena da caricare quando premi Play nel Menu Principale")]
     [SerializeField] private string gameSceneName;
-
+    [SerializeField] private GameObject deathScreenPanel;
     [Tooltip("Nome della scena del Menu Principale (utilizzato dalla Pausa per tornare indietro)")]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
@@ -121,7 +121,21 @@ public class MenuManager : MonoBehaviour
     }
 
     // --- GESTIONE PAUSA (IN-GAME) ---
+    public void ShowDeathScreen()
+{
+    if (deathScreenPanel != null) deathScreenPanel.SetActive(true);
 
+    Time.timeScale = 0f;
+
+    Cursor.lockState = CursorLockMode.None;
+    Cursor.visible = true;
+}
+
+public void RetryLevel()
+{
+    Time.timeScale = 1f;
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+}
     public void Pause()
     {
         PlayClickSound();

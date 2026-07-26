@@ -172,6 +172,9 @@ MonoBehaviour:
   maxDistance: 35
   aimRadius: 0.5
   moveDuration: 0.5
+  crosshairImage: {fileID: 0}
+  normalSprite: {fileID: 0}
+  validTargetSprite: {fileID: 0}
 --- !u!1 &7954180108819900810
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +289,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 5
   text: Timer
+  explosionSFX: {fileID: 8300000, guid: 2b4a26868889a8c468e46c0a7afa1e45, type: 3}
+  deathScreenPanel: {fileID: 0}
+  menuManager: {fileID: 0}
 --- !u!1001 &3029523324378163568
 PrefabInstance:
   m_ObjectHideFlags: 0
